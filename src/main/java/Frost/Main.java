@@ -5,7 +5,7 @@ public class Main {
         GamePanel gamePanel = new GamePanel();
 //        gamePanel.showPole(gamePanel.pole1);
 //        gamePanel.showPole(gamePanel.pole2);
-        gamePanel.readFile();
+        gamePanel.readFile("LOG.txt");
 
 
 

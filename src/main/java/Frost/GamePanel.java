@@ -55,8 +55,8 @@ public class GamePanel {
     }
 
 
-    public void readFile(){
-        File file = new File("LOG.txt");
+    public void readFile(String fileName){
+        File file = new File(fileName);
         Scanner scanner = null;
         try {
             scanner = new Scanner(file);
@@ -71,4 +71,8 @@ public class GamePanel {
             System.out.println(el);
         }
     }
+    public void test(){
+
+    }
 }
+
