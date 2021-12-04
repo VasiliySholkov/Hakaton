@@ -2,10 +2,14 @@ package Frost;
 
 
 import java.io.File;
-import java.util.Arrays;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class GamePanel {
-    File file = new File("");
+    List<String> logList = new ArrayList<>();
+
     public String[][] pole1 = new String[][]{
             { " "," "," "," "," "," "," "," "," "," ",},
             { " "," "," "," "," "," "," "," "," "," ",},
@@ -47,11 +51,24 @@ public class GamePanel {
       }
       System.out.println();
         }count=0;
-
+       System.out.println();
     }
 
 
     public void readFile(){
-
+        File file = new File("LOG.txt");
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+        }
+        while (scanner.hasNextLine()){
+            logList.add(scanner.nextLine());
+        }
+        for (String el:
+             logList) {
+            System.out.println(el);
+        }
     }
 }
