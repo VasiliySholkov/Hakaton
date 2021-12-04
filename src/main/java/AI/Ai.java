@@ -14,13 +14,20 @@ public class Ai {
     }
 
     public String[][] fleetCreate(String[][] battleplan) {
-        int counter=4;
+        int counter = 4;
+//
+//        while (counter != 0) {
+//            for (int i = 0; i <( 5 - counter); i++) createShip(battleplan, counter);
+//
+//            counter -= 1;
+//        }
 
-        while (counter!=0) {
-            for (int i=0;i<5-counter;i++) createShip(battleplan,counter);
-
-            counter-=1;
-        }
+        createShip(battleplan, 4);
+        createShip(battleplan, 3);
+        createShip(battleplan, 3);
+        createShip(battleplan, 2);
+        createShip(battleplan, 2);
+        createShip(battleplan, 2);
 
 
         return battleplan;
@@ -29,23 +36,30 @@ public class Ai {
 
     public String[][] createShip(String[][] battleplan, int decknum) {
 
-        int startingPositionX = random.nextInt(10-decknum);
-        int startingPositionY = random.nextInt(10-decknum);
+        int startingPositionX = random.nextInt(10 - decknum);
+        int startingPositionY = random.nextInt(10 - decknum);
         int rotate = random.nextInt(2);
 
         for (int i = 0; i < decknum; i++) {
             if (rotate == 0) {
-                if (battleplan[startingPositionX + i][startingPositionY] == "S") {
-                    createShip(battleplan,decknum);
+                if ((battleplan[startingPositionX + i][startingPositionY] == "S") || (battleplan[startingPositionX + i][startingPositionY] == "-")) {
+
+                    startingPositionX = random.nextInt(10 - decknum);
+                    startingPositionY = random.nextInt(10 - decknum);
+                    rotate = random.nextInt(2);
+                    i = 0;
                 }
             } else {
-                if (battleplan[startingPositionX][startingPositionY + i] == "S") {
-                    createShip(battleplan,decknum);
+                if ((battleplan[startingPositionX][startingPositionY + i] == "S") || (battleplan[startingPositionX][startingPositionY + i] == "-")) {
+                    startingPositionX = random.nextInt(10 - decknum);
+                    startingPositionY = random.nextInt(10 - decknum);
+                    rotate = random.nextInt(2);
+                    i = 0;
                 }
 
             }
         }
-
+        System.out.println("Ship created at " + startingPositionX + " " + startingPositionY + " its lenght" + decknum + "and rotation" + rotate);
         for (int i = 0; i < decknum; i++) {
             if (rotate == 0) {
                 battleplan[startingPositionX + i][startingPositionY] = "S";
@@ -54,28 +68,84 @@ public class Ai {
             }
         }
 
+//        for (int i = 0; i < decknum; i++) {
+//            if (rotate == 0) {
+//                if (startingPositionY != 0) battleplan[startingPositionX + i][startingPositionY - 1] = "-";
+//                if (startingPositionY != 9) battleplan[startingPositionX + i][startingPositionY +1] = "-";
+//            } else {
+//
+//                if (startingPositionX != 0) battleplan[startingPositionX - 1][startingPositionY + i] = "-";
+//                if (startingPositionX != 9) battleplan[startingPositionX + 1][startingPositionY + i] = "-";
+//
+//            }
+//        }
+//
+//        if (rotate==0){
+//            if (startingPositionX!=0) {battleplan[startingPositionX-1 ][startingPositionY] = "-";
+//                if (startingPositionY!=0) battleplan[startingPositionX-1 ][startingPositionY-1] = "-";
+//                if (startingPositionY!=9) battleplan[startingPositionX-1 ][startingPositionY+1] = "-";
+//
+//            }
+//            if (startingPositionX+decknum<=9) {battleplan[startingPositionX+decknum ][startingPositionY] = "-";
+//                if (startingPositionY!=0) battleplan[startingPositionX+decknum ][startingPositionY-1] = "-";
+//                if (startingPositionY!=9) battleplan[startingPositionX+decknum ][startingPositionY+1] = "-";
+//
+//            }
+//        }
+//        else {
+//            if (startingPositionY!=0) {battleplan[startingPositionX][startingPositionY-1] = "-";
+//                if (startingPositionX!=0) battleplan[startingPositionX-1 ][startingPositionY-1] = "-";
+//                if (startingPositionX!=9) battleplan[startingPositionX+1 ][startingPositionY-1] = "-";
+//
+//            }
+//            if (startingPositionY+decknum<=9) {battleplan[startingPositionX ][startingPositionY+1] = "-";
+//                if (startingPositionX!=0) battleplan[startingPositionX-1 ][startingPositionY+decknum] = "-";
+//                if (startingPositionX!=9) battleplan[startingPositionX+1 ][startingPositionY+decknum] = "-";
+//
+//            }
+//        }
+
 
         return battleplan;
     }
 
 
-
-    public  String[][] fire(String[][] battleplan){
+    public String[][] fire(String[][] battleplan) {
 
         int shotX = randomPosition();
         int shotY = randomPosition();
 
-        if (battleplan[shotX][shotY]!="X"){
-            if (battleplan[shotX][shotY]!="S") battleplan[shotX][shotY]="*";
-            else battleplan[shotX][shotY]="X";
-        }
-        else fire(battleplan);
+        if (battleplan[shotX][shotY] != "X") {
+            if (battleplan[shotX][shotY] != "S") battleplan[shotX][shotY] = "*";
+            else battleplan[shotX][shotY] = "X";
+        } else fire(battleplan);
         return battleplan;
 
     }
 
+    public int takeAim(String[][] battleplan, int X, int Y) {
+
+        switch (random.nextInt(4)) {
+            case 0:
+                return 1;
+        }
+
+        return 1;
+    }
+
+    public String[][] aimedFire(String[][] battleplan, int takeAimX, int takeAimY, int presumeRotation) {
+
+        int shotX = takeAimX;
+        int shotY = takeAimY;
 
 
+        if (battleplan[shotX][shotY] != "X") {
+            if (battleplan[shotX][shotY] != "S") battleplan[shotX][shotY] = "*";
+            else battleplan[shotX][shotY] = "X";
+        } else aimedFire(battleplan, takeAimX, takeAimY, presumeRotation);
+        return battleplan;
+
+    }
 
 
 }

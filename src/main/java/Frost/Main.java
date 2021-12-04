@@ -1,5 +1,7 @@
 package Frost;
 
+import AI.Ai;
+
 public class Main {
     public static void main(String[] args) {
         GamePanel gamePanel = new GamePanel();
@@ -7,6 +9,9 @@ public class Main {
 //        gamePanel.showPole(gamePanel.pole2);
         gamePanel.readFile("LOG.txt");
 
+        Ai ai1 = new Ai();
+        ai1.fleetCreate(gamePanel.pole1);
+        gamePanel.showPole(gamePanel.pole1);
 
 
     }
