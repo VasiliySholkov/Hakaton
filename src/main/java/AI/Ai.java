@@ -7,10 +7,14 @@ public class Ai {
 
         Random random = new Random();
 
-        public  int[][] fleetCreate(int[][] battleplan) {
+        public  String[][] fleetCreate(String[][] battleplan) {
 
             int startingPositionX= random.nextInt(10);
             int startingPositionY = random.nextInt(10);
+
+
+
+
 
 
 
