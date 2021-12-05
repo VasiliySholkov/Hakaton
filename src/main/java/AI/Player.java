@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Player {
     int wincounter;
 
+
     public int getWincounter() {
         return wincounter;
     }
@@ -12,7 +13,6 @@ public class Player {
     public void setWincounter(int wincounter) {
         this.wincounter = wincounter;
     }
-
 
 
     Scanner scanner = new Scanner(System.in);
@@ -59,7 +59,7 @@ public class Player {
             if (battleplan[shotX][shotY] != "S") battleplan[shotX][shotY] = "*";
             else {
                 battleplan[shotX][shotY] = "X";
-                setWincounter(getWincounter()+1);
+                setWincounter(getWincounter() + 1);
             }
         } else fire(battleplan);
         return battleplan;
