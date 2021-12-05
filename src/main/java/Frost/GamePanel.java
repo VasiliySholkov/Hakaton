@@ -4,11 +4,13 @@ package Frost;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class GamePanel {
     List<String> logList = new ArrayList<>();
+    List<String[]> splitLogList = new ArrayList<>();
 
     public String[][] pole1 = new String[][]{
             {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ",},
@@ -67,14 +69,18 @@ public class GamePanel {
         while (scanner.hasNextLine()) {
             logList.add(scanner.nextLine());
         }
-        for (String el :
-                logList) {
-            System.out.println(el);
-        }
+
     }
 
-    public void test() {
-
+    public void test(List<String> logList) {
+        for (String el :
+                logList) {
+            this.splitLogList.add(el.split("\\W+"));
+        }
+        for (String[] el :
+                splitLogList) {
+            System.out.println(Arrays.toString(el));
+        }
     }
 }
 
