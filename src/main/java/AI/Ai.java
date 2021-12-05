@@ -7,6 +7,16 @@ public class Ai {
 
     Random random = new Random();
 
+    int wincounter;
+
+    public int getWincounter() {
+        return wincounter;
+    }
+
+    public void setWincounter(int wincounter) {
+        this.wincounter = wincounter;
+    }
+
     public int randomPosition() {
         int position = random.nextInt(10);
 
@@ -15,19 +25,14 @@ public class Ai {
 
     public String[][] fleetCreate(String[][] battleplan) {
         int counter = 4;
-//
-//        while (counter != 0) {
-//            for (int i = 0; i <( 5 - counter); i++) createShip(battleplan, counter);
-//
-//            counter -= 1;
-//        }
 
-        createShip(battleplan, 4);
-        createShip(battleplan, 3);
-        createShip(battleplan, 3);
-        createShip(battleplan, 2);
-        createShip(battleplan, 2);
-        createShip(battleplan, 2);
+        while (counter != 0) {
+            for (int i = 0; i <( 5 - counter); i++) createShip(battleplan, counter);
+
+            counter -= 1;
+        }
+
+
 
 
         return battleplan;
@@ -117,7 +122,10 @@ public class Ai {
 
         if (battleplan[shotX][shotY] != "X") {
             if (battleplan[shotX][shotY] != "S") battleplan[shotX][shotY] = "*";
-            else battleplan[shotX][shotY] = "X";
+            else{
+                battleplan[shotX][shotY] = "X";
+                setWincounter(getWincounter()+1);
+            }
         } else fire(battleplan);
         return battleplan;
 
