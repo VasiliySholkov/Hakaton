@@ -47,7 +47,7 @@ public class Game {
         System.out.println();
     }
 
-    static void choseMenu(String chose) {
+   public static void choseMenu(String chose) {
         switch (chose) {
             case "1":
                 System.out.println("Select game mode\n" +
@@ -169,7 +169,7 @@ public class Game {
         }
     }
 
-    static String userChose() {
+     public static String userChose() {
         Scanner scanner = new Scanner(System.in);
         String str = new String(scanner.nextLine());
         return str;

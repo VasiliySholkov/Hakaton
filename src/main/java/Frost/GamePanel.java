@@ -1,6 +1,8 @@
 package Frost;
 
 
+import VP.Game;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -77,10 +79,23 @@ public class GamePanel {
                 logList) {
             this.splitLogList.add(el.split("\\W+"));
         }
-        for (String[] el :
-                splitLogList) {
+        for (int i = 16; i <splitLogList.size()-2; i++) {
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("A","0");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("B","1");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("C","2");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("D","3");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("E","4");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("F","5");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("G","6");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("H","7");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("I","8");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("J","9");
+            }
+        for (String[] el:
+             splitLogList) {
             System.out.println(Arrays.toString(el));
         }
+        }
     }
-}
+
 
