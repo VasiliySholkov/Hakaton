@@ -64,16 +64,28 @@ public class Game {
                         break;
                     case "2":
                         System.out.println("Game mode: Player-Player");
+                        System.out.println("Player1 starts placing his fleet");
+                        System.out.println("Please enter first coordinates of your ship and it rotation(0-vertical, 1-horizantal) Example: 7(Y-axis) 5(X-axis) 0(rotation)");
+
+
                         Player player1= new Player();
+
+
                         Player player2= new Player();
                         GamePanel gamePanel = new GamePanel();
                         player1.fleetCreate(gamePanel.pole1);
+                        System.out.println("Player2 starts placing his fleet");
+                        System.out.println("Please enter first coordinates of your ship and it rotation(0-vertical, 1-horizantal) Example: 7(Y-axis) 5(X-axis) 0(rotation)");
                         player2.fleetCreate(gamePanel.pole2);
 
                         while (player1.getWincounter()!=20||player2.getWincounter()!=20){
+
+                            System.out.println("Player1 starts firing (Enter shot coordinates( X Y )");
                             player1.fire(gamePanel.pole2);
+                            System.out.println("Player2 starts firing (Enter shot coordinates( X Y )");
                             player2.fire(gamePanel.pole1);
                         }
+                        System.out.println("                    VICTORY!!!");
                         // метод игры Игрок-Игрок
                         break;
                     case "3":

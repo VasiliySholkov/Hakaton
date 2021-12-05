@@ -1,5 +1,7 @@
 package AI;
 
+import Frost.GamePanel;
+
 import java.util.Scanner;
 
 public class Player {
@@ -36,9 +38,9 @@ public class Player {
         int startingPositionX = scanner.nextInt();
         int startingPositionY = scanner.nextInt();
         int rotate = scanner.nextInt();
+        GamePanel gamePanel = new GamePanel();
 
-
-        System.out.println("Ship created at " + startingPositionX + " " + startingPositionY + " its lenght" + decknum + "and rotation" + rotate);
+        System.out.println("Ship created at " + startingPositionX + " " + startingPositionY + " its lenght " + decknum + " and rotation " + rotate);
         for (int i = 0; i < decknum; i++) {
             if (rotate == 0) {
                 battleplan[startingPositionX + i][startingPositionY] = "S";
@@ -46,6 +48,8 @@ public class Player {
                 battleplan[startingPositionX][startingPositionY + i] = "S";
             }
         }
+        gamePanel.showPole(battleplan);
+
         return battleplan;
     }
 
@@ -60,6 +64,8 @@ public class Player {
             else {
                 battleplan[shotX][shotY] = "X";
                 setWincounter(getWincounter() + 1);
+                System.out.println("Success!! Current player  may fire again (Enter shot coordinates( X Y )");
+                fire(battleplan);
             }
         } else fire(battleplan);
         return battleplan;
