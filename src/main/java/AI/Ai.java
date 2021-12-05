@@ -27,12 +27,10 @@ public class Ai {
         int counter = 4;
 
         while (counter != 0) {
-            for (int i = 0; i <( 5 - counter); i++) createShip(battleplan, counter);
+            for (int i = 0; i < (5 - counter); i++) createShip(battleplan, counter);
 
             counter -= 1;
         }
-
-
 
 
         return battleplan;
@@ -73,43 +71,6 @@ public class Ai {
             }
         }
 
-//        for (int i = 0; i < decknum; i++) {
-//            if (rotate == 0) {
-//                if (startingPositionY != 0) battleplan[startingPositionX + i][startingPositionY - 1] = "-";
-//                if (startingPositionY != 9) battleplan[startingPositionX + i][startingPositionY +1] = "-";
-//            } else {
-//
-//                if (startingPositionX != 0) battleplan[startingPositionX - 1][startingPositionY + i] = "-";
-//                if (startingPositionX != 9) battleplan[startingPositionX + 1][startingPositionY + i] = "-";
-//
-//            }
-//        }
-//
-//        if (rotate==0){
-//            if (startingPositionX!=0) {battleplan[startingPositionX-1 ][startingPositionY] = "-";
-//                if (startingPositionY!=0) battleplan[startingPositionX-1 ][startingPositionY-1] = "-";
-//                if (startingPositionY!=9) battleplan[startingPositionX-1 ][startingPositionY+1] = "-";
-//
-//            }
-//            if (startingPositionX+decknum<=9) {battleplan[startingPositionX+decknum ][startingPositionY] = "-";
-//                if (startingPositionY!=0) battleplan[startingPositionX+decknum ][startingPositionY-1] = "-";
-//                if (startingPositionY!=9) battleplan[startingPositionX+decknum ][startingPositionY+1] = "-";
-//
-//            }
-//        }
-//        else {
-//            if (startingPositionY!=0) {battleplan[startingPositionX][startingPositionY-1] = "-";
-//                if (startingPositionX!=0) battleplan[startingPositionX-1 ][startingPositionY-1] = "-";
-//                if (startingPositionX!=9) battleplan[startingPositionX+1 ][startingPositionY-1] = "-";
-//
-//            }
-//            if (startingPositionY+decknum<=9) {battleplan[startingPositionX ][startingPositionY+1] = "-";
-//                if (startingPositionX!=0) battleplan[startingPositionX-1 ][startingPositionY+decknum] = "-";
-//                if (startingPositionX!=9) battleplan[startingPositionX+1 ][startingPositionY+decknum] = "-";
-//
-//            }
-//        }
-
 
         return battleplan;
     }
@@ -122,9 +83,9 @@ public class Ai {
 
         if (battleplan[shotX][shotY] != "X") {
             if (battleplan[shotX][shotY] != "S") battleplan[shotX][shotY] = "*";
-            else{
+            else {
                 battleplan[shotX][shotY] = "X";
-                setWincounter(getWincounter()+1);
+                setWincounter(getWincounter() + 1);
             }
         } else fire(battleplan);
         return battleplan;
