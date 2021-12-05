@@ -1,5 +1,8 @@
 package VP;
 
+import AI.Player;
+import Frost.GamePanel;
+
 import java.util.*;
 
 public class Game {
@@ -61,6 +64,16 @@ public class Game {
                         break;
                     case "2":
                         System.out.println("Game mode: Player-Player");
+                        Player player1= new Player();
+                        Player player2= new Player();
+                        GamePanel gamePanel = new GamePanel();
+                        player1.fleetCreate(gamePanel.pole1);
+                        player2.fleetCreate(gamePanel.pole2);
+
+                        while (player1.getWincounter()!=20||player2.getWincounter()!=20){
+                            player1.fire(gamePanel.pole2);
+                            player2.fire(gamePanel.pole1);
+                        }
                         // метод игры Игрок-Игрок
                         break;
                     case "3":

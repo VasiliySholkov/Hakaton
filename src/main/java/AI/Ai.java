@@ -1,6 +1,7 @@
 package AI;
 
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Ai {
@@ -46,15 +47,9 @@ public class Ai {
 
         for (int i = 0; i < decknum; i++) {
             if (rotate == 0) {
-                if ((battleplan[startingPositionX + i][startingPositionY] != "S") && (battleplan[startingPositionX + i][startingPositionY] != "-")) {
-
-                 placeable=true;
-                } else  placeable=false;
+                placeable= (!Objects.equals(battleplan[startingPositionX + i][startingPositionY], "S")) && (!Objects.equals(battleplan[startingPositionX + i][startingPositionY], "-"));
             } else {
-                if ((battleplan[startingPositionX][startingPositionY + i] != "S") && (battleplan[startingPositionX][startingPositionY + i] != "-")) {
-
-                    placeable=true;
-                } else  placeable=false;
+                placeable= (!Objects.equals(battleplan[startingPositionX][startingPositionY + i], "S")) && (!Objects.equals(battleplan[startingPositionX][startingPositionY + i], "-"));
 
             }
         }
@@ -103,8 +98,8 @@ public class Ai {
         int shotX = randomPosition();
         int shotY = randomPosition();
         if (getWincounter()==20)return battleplan;
-        if (battleplan[shotX][shotY] != "X"&&battleplan[shotX][shotY]!="*") {
-            if (battleplan[shotX][shotY] != "S") battleplan[shotX][shotY] = "*";
+        if ((!Objects.equals(battleplan[shotX][shotY], "X"))&& (!Objects.equals(battleplan[shotX][shotY], "*"))) {
+            if (!Objects.equals(battleplan[shotX][shotY], "S")) battleplan[shotX][shotY] = "*";
             else {
                 battleplan[shotX][shotY] = "X";
                 setWincounter(getWincounter() + 1);
@@ -121,8 +116,8 @@ public class Ai {
         switch (random.nextInt(4)) {
             case 0:
                 if (X+1<=9){
-                    if (battleplan[X+1][Y] != "X" && battleplan[X+1][Y]!="*") {
-                        if (battleplan[X+1][Y] != "S") battleplan[X+1][Y] = "*";
+                    if (!Objects.equals(battleplan[X + 1][Y], "X") && !Objects.equals(battleplan[X + 1][Y], "*")) {
+                        if (!Objects.equals(battleplan[X + 1][Y], "S")) battleplan[X+1][Y] = "*";
                         else {
                             battleplan[X+1][Y] = "X";
                             setWincounter(getWincounter() + 1);
@@ -133,8 +128,8 @@ public class Ai {
                 return battleplan;
             case 1:
                 if (X-1>=0){
-                    if (battleplan[X-1][Y] != "X" && battleplan[X-1][Y]!="*") {
-                        if (battleplan[X-1][Y] != "S") battleplan[X-1][Y] = "*";
+                    if (!Objects.equals(battleplan[X - 1][Y], "X") && !Objects.equals(battleplan[X - 1][Y], "*")) {
+                        if (!Objects.equals(battleplan[X - 1][Y], "S")) battleplan[X-1][Y] = "*";
                         else {
                             battleplan[X-1][Y] = "X";
                             setWincounter(getWincounter() + 1);
@@ -146,8 +141,8 @@ public class Ai {
                 return battleplan;
             case 2:
                 if (Y+1<=9){
-                    if (battleplan[X][Y+1] != "X" && battleplan[X][Y+1]!="*") {
-                        if (battleplan[X][Y+1] != "S") battleplan[X][Y+1] = "*";
+                    if (!Objects.equals(battleplan[X][Y + 1], "X") && !Objects.equals(battleplan[X][Y + 1], "*")) {
+                        if (!Objects.equals(battleplan[X][Y + 1], "S")) battleplan[X][Y+1] = "*";
                         else {
                             battleplan[X][Y+1] = "X";
                             setWincounter(getWincounter() + 1);
@@ -158,8 +153,8 @@ public class Ai {
                 return battleplan;
             case 3:
                 if (Y-1>=0){
-                    if (battleplan[X][Y-1] != "X" && battleplan[X][Y-1]!="*") {
-                        if (battleplan[X][Y-1] != "S") battleplan[X][Y-1] = "*";
+                    if (!Objects.equals(battleplan[X][Y - 1], "X") && !Objects.equals(battleplan[X][Y - 1], "*")) {
+                        if (!Objects.equals(battleplan[X][Y - 1], "S")) battleplan[X][Y-1] = "*";
                         else {
                             battleplan[X][Y-1] = "X";
                             setWincounter(getWincounter() + 1);
