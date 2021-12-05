@@ -1,14 +1,18 @@
 package Frost;
 
 
+import VP.Game;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class GamePanel {
     List<String> logList = new ArrayList<>();
+    List<String[]> splitLogList = new ArrayList<>();
 
     public String[][] pole1 = new String[][]{
             {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ",},
@@ -67,14 +71,31 @@ public class GamePanel {
         while (scanner.hasNextLine()) {
             logList.add(scanner.nextLine());
         }
+
+    }
+
+    public void test(List<String> logList) {
         for (String el :
                 logList) {
-            System.out.println(el);
+            this.splitLogList.add(el.split("\\W+"));
+        }
+        for (int i = 16; i <splitLogList.size()-2; i++) {
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("A","0");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("B","1");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("C","2");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("D","3");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("E","4");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("F","5");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("G","6");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("H","7");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("I","8");
+            splitLogList.get(i)[1]=splitLogList.get(i)[1].replaceAll("J","9");
+            }
+        for (String[] el:
+             splitLogList) {
+            System.out.println(Arrays.toString(el));
+        }
         }
     }
 
-    public void test() {
-
-    }
-}
 
